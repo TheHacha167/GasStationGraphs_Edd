@@ -1,4 +1,4 @@
-package graph;
+package grafo;
 
 /**
  * Clase GasStation
@@ -17,6 +17,6 @@ package graph;
  * Métodos:
  * - Implementación del método getClave() de GraphNode.
  */
-public class GasStation implements GraphNode {
+public class Gasolinera implements NodoGrafo {
     // Definiciones de atributos y métodos
 }

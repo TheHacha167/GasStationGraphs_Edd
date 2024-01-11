@@ -1,4 +1,4 @@
-package graph;
+package grafo;
 
 /**
  * Interface GraphNode
@@ -9,6 +9,6 @@ package graph;
  * - String getClave(): Este método deberá ser implementado para retornar la clave única
  *   que identifica a cada nodo dentro del grafo.
  */
-public interface GraphNode {
+public interface NodoGrafo {
     String getClave();
 }

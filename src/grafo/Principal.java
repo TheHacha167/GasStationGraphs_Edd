@@ -1,4 +1,4 @@
-package graph;
+package grafo;
 
 /**
  * Clase Main
@@ -10,7 +10,7 @@ package graph;
  *   leer los datos (por ejemplo, de un archivo), crear instancias de GasStation y Graph,
  *   y luego realizar operaciones como calcular el camino más corto entre gasolineras.
  */
-public class Main {
+public class Principal {
     public static void main(String[] args) {
         // Lógica principal del programa
     }

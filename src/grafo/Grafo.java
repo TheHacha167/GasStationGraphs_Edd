@@ -1,4 +1,4 @@
-package graph;
+package grafo;
 
 import java.util.*;
 
@@ -21,6 +21,6 @@ import java.util.*;
  * - String toString(): Representación en String del grafo.
  * - List<Double> dijkstra(): Implementación del algoritmo de Dijkstra para encontrar el camino más corto.
  */
-public class Graph {
+public class Grafo {
     // Definiciones de atributos y métodos
 }
