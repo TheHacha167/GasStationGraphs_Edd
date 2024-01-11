@@ -1,5 +1,4 @@
 # GasStationGraphs
-# GasStationGraphs
 
 ## Descripción
 Este repositorio contiene el proyecto `GasStationGraphs`, una aplicación Java diseñada para almacenar y gestionar información de gasolineras utilizando estructuras de grafos. El proyecto implementa algoritmos para calcular el camino más corto entre gasolineras, siguiendo el algoritmo de Dijkstra.
