@@ -1,0 +1,81 @@
+Este documento contiene información complementaria para el desarrollo de la actividad grupal.
+
+La información de cada gasolinera según consta en el enunciado es:
+(*) String clave: es la clave única de la gasolinera. Es el valor devuelto por el método getClave() de la interface NodoGrafo. Esta clave será la representación simbólica de la gasolinera en el grafo.
+(*) String rotulo: rótulo de la gasolinera.
+(*) String dirección: dirección postal de la gasolinera.
+(*) String latitud: latitud en la que se ubica la gasolinera.
+(*) String longitud: longitud en la que se ubica la gasolinera.
+
+Los atributos latitud y longitud se sustitiyen por los siguientes:
+
+(*) String municipio: municipio en el que encuentra la gasolinera.
+(*) String localidad: localidad dentro del municipio en el que se encuentra la gasolinera.
+
+El fichero "gasolineras.csv" contiene información de 44 gasolineras. Cada fila corresponde a una gasolinera, y dentro de la fila, los datos propios de la gasolinera están separados por punto y coma (;) y el orden es el siguiente: municipio, localidad, clave, dirección y rótulo.
+
+El fichero "distancias-gasolineras.csv" contiene información de distancias entre gasolineras, en concreto almacena 127 distancias. Cada fila corresponde a la distancia entre dos gasolineras concretas. Los datos en cada fila están separados por punto y coma (;) y el orden es el siguiente: clave de la primera gasolinera, clave de la segunda gasolinera, distancia lineal en kilómetros entre las dos gasolineras.
+
+Ambos ficheros están en la sección de documentación, en la carpeta "Actividad grupal". Para su elaboración se han utilzado los datos de las webs https://geoportalgasolineras.es/geoportal-instalaciones/Inicio y https://www.dieselogasolina.com/buscador-gasolineras.html
+
+Para la programación de la lectura de los ficheros, se asume que ambos se ubican en el directorio del proyecto. Para aquellos que comenzáis este curso con Java, os comparto un código de lectura de ambos ficheros para que podáis utilizarlo en caso de que lo necesitéis. La lectura de los datos de las gasolineras incorpora la creación de los nodos del grafo con las llamadas al método insertarNodo(), y la lectura de las distancias entre gasolineras incorpora la creación de las asristas del grafo con las llamadas al método insertarArista():
+
+		// LECTURA DE LOS DATOS DE LAS GASOLINERAS Y CONSTRUCCIÓN DE LOS NODOS DEL GRAFO
+	    String directorioProyecto = System.getProperty("user.dir");
+	    String nombreFicheroGasolineras = "gasolineras.csv";
+	    String separador = System.getProperty("file.separator");
+	    String pathFicheroGasolineras = directorioProyecto + separador + nombreFicheroGasolineras;
+	    
+	    String[] datosGasolinera = new String[5];
+	    Gasolinera gasolinera;
+
+	      try (FileReader fr = new FileReader(pathFicheroGasolineras)) {
+	          BufferedReader br = new BufferedReader(fr);
+	          String linea;
+	          while ((linea = br.readLine()) != null) {
+	        	  datosGasolinera = linea.split(";");
+	        	  gasolinera = new Gasolinera(datosGasolinera[0], datosGasolinera[1], datosGasolinera[2], datosGasolinera[3], datosGasolinera[4]);
+	        	  grafo.insertarNodo(gasolinera);
+	          }
+	      }
+	       catch(Exception e){
+	          e.printStackTrace();
+	       }
+	      
+		// LECTURA DE LAS DISTANCIAS ENTRE GASOLINERAS Y CONSTRUCCIÓN DE LAS ARISTAS DEL GRAFO
+	    String nombreFicheroDistanciasGasolineras = "distancias-gasolineras.csv";
+	    String pathFicheroDistanciasGasolineras = directorioProyecto + separador + nombreFicheroDistanciasGasolineras;
+	    String[] datosDistanciaGasolineras;
+	    
+	      try (FileReader fr = new FileReader(pathFicheroDistanciasGasolineras)) {
+	          BufferedReader br = new BufferedReader(fr);
+	          String linea;
+	          while ((linea = br.readLine()) != null) {
+	        	  datosDistanciaGasolineras = linea.split(";");
+	        	  grafo.insertarArista(datosDistanciaGasolineras[0], datosDistanciaGasolineras[1], datosDistanciaGasolineras[2] );
+	          }
+	      }
+	       catch(Exception e){
+	          e.printStackTrace();
+	       }
+	      
+
+
+En el enunciado, hay una errata, que ya os la comenté en la última clase presencial. En el primer método de Dijkstra, falta el parámetro del método. Quedaría de la siguiente manera:
+
+(*) public List<Double> Dijkstra(String clave): devuelve el vector de distancias mínimas del algoritmo de Dijkstra tomando como nodo inicial el nodo que tiene la clave pasada por parámetro.
+
+En relación a la implementación del grafo, la semana antes de las vacaciones de diciembre, comenzamos a programar en clase un grafo utilizando como soporte matrices de adyacencia. Como consecuencia, os comenté en clase, que lo que se espera en la actividad grupal es que implementéis vuestro grafo utilizando listas de adyacencia. Pero, teniendo en cuenta que, en la impementación que habíamos comenzado a hacer en clase:
+(1) el grafo es DIRIGIDO Y NO PONDERADO y en la actividad es lo contrario, NO DIRIGIDO Y PONDERADO
+(2) sólo implementamos la definición del grafo y los métodos insertarNodo(), insertarArista(), existeArista() y toString()
+(3) no tuvimos tiempo de avanzar en la implementación en la última clase presencial
+
+Considero que no hay ningún inconveniente en que si lo preferís, implementéis vuestro grafo utilizando matrices de adyacencia y podaís reutilizar parte del código que hemos hecho juntos en clase, teniendo en cuenta lo especificado en el punto (1) de la lista anterior, que el método insertarArista() debe incorporar el peso de la arista, que la matriz de adyacencia pasa de guardar 0s y 1s a guardar los pesos, etc.
+
+Para cualquier consulta, ya sabéis que podéis consultar en las clases presenciales, las tutorías y el foro.
+
+
+
+
+
+
