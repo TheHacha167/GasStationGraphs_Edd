@@ -15,10 +15,18 @@ public class Gasolinera implements NodoGrafo {
         this.localidad = localidad;
     }
 
-    @Override
     public String getClave() {
         return clave;
     }
 
+    public String toString() {
+        return "Gasolinera{" +
+               "clave='" + clave + '\'' +
+               ", rotulo='" + rotulo + '\'' +
+               ", direccion='" + direccion + '\'' +
+               ", municipio='" + municipio + '\'' +
+               ", localidad='" + localidad + '\'' +
+               '}';
+    }
     // Otros métodos como getters si son necesarios
 }
