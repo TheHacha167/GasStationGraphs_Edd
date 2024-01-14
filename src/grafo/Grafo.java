@@ -99,6 +99,51 @@ public class Grafo {
                 // Implementaciones de los métodos adicionales (borrarNodo, existeNodo, etc.)
                 // ... [Métodos previamente proporcionados] ...
             
+
+// TODO: Implementar método borrarNodo
+    // Este método deberá eliminar el nodo especificado y todas las aristas relacionadas con él.
+    // Consideraciones:
+    // 1. Buscar el nodo en la lista de nodos usando su clave.
+    // 2. Si el nodo existe, eliminarlo de la lista de nodos.
+    // 3. Recorrer todos los nodos restantes y eliminar cualquier arista que conecte con el nodo eliminado.
+    // 4. Asegurarse de que el método maneje correctamente el caso en que el nodo no exista.
+
+
+// TODO: Implementar método existeNodo
+    // Este método verificará si un nodo existe en el grafo basándose en su clave.
+    // Consideraciones:
+    // 1. Recorrer la lista de nodos y buscar un nodo que coincida con la clave dada.
+    // 2. Retornar verdadero si el nodo existe, falso en caso contrario.
+
+// TODO: Implementar método existeNodo
+    // Este método verificará si un nodo existe en el grafo basándose en su clave.
+    // Consideraciones:
+    // 1. Recorrer la lista de nodos y buscar un nodo que coincida con la clave dada.
+    // 2. Retornar verdadero si el nodo existe, falso en caso contrario.
+
+// TODO: Implementar método borrarArista
+    // Este método eliminará una arista entre dos nodos especificados por sus claves.
+    // Consideraciones:
+    // 1. Verificar que ambos nodos existen en el grafo.
+    // 2. Si ambos nodos existen, buscar la arista que los conecta y eliminarla de las listas de aristas de ambos nodos.
+    // 3. Asegurarse de que el método maneje correctamente el caso en que uno o ambos nodos no existan o la arista no exista.
+
+
+// TODO: Implementar método existeArista
+    // Este método verificará si una arista existe entre dos nodos especificados por sus claves.
+    // Consideraciones:
+    // 1. Verificar que ambos nodos existen.
+    // 2. Si ambos nodos existen, buscar en sus listas de aristas para ver si existe una arista que los conecte.
+    // 3. Retornar verdadero si la arista existe, falso en caso contrario.
+
+// TODO: Implementar método numeroAristas
+    // Este método contará el número total de aristas en el grafo.
+    // Consideraciones:
+    // 1. Recorrer todos los nodos y sumar la cantidad de aristas de cada uno.
+    // 2. Dividir el total por 2, ya que el grafo es no dirigido y cada arista se cuenta dos veces (una en cada nodo).
+
+
+
                 // Implementación del algoritmo de Dijkstra
                 public List<String> Dijkstra(String claveOrigen, String claveDestino) {
                     Nodo origen = encontrarNodoPorClave(claveOrigen);
