@@ -1,22 +1,19 @@
 package grafo;
 
-/**
- * Clase GasStation
- * Representa una gasolinera y sus atributos. Implementa la interfaz GraphNode.
- * 
- * Atributos (al menos):
- * - String clave: Identificador único de la gasolinera.
- * - String rotulo: Nombre o rótulo de la gasolinera.
- * - String dirección: Dirección postal de la gasolinera.
- * - String latitud: Latitud geográfica de la gasolinera.
- * - String longitud: Longitud geográfica de la gasolinera.
- * 
- * Constructor:
- * - GasStation(String clave, String rotulo, String dirección, String latitud, String longitud)
- * 
- * Métodos:
- * - Implementación del método getClave() de GraphNode.
- */
-public class Gasolinera implements NodoGrafo {
-    // Definiciones de atributos y métodos
+public class Gasolinera {
+    private String clave;
+    private String rotulo;
+    private String direccion;
+    private String municipio;
+    private String localidad;
+
+    public Gasolinera(String clave, String rotulo, String direccion, String municipio, String localidad) {
+        this.clave = clave;
+        this.rotulo = rotulo;
+        this.direccion = direccion;
+        this.municipio = municipio;
+        this.localidad = localidad;
+    }
+
+    // Otros métodos, incluyendo posiblemente getters y la implementación de NodoGrafo
 }
