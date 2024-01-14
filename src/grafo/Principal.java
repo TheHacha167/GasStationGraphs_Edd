@@ -90,7 +90,7 @@ public class Principal {
                 String[] datos = linea.split(";");
                 double distancia = Double.parseDouble(datos[2].replace(",", "."));
                 grafo.insertarArista(datos[0], datos[1], distancia);
-                //System.out.println("Insertada arista entre " + datos[0] + " y " + datos[1] + " con distancia " + distancia);
+               // System.out.println("Insertada arista entre " + datos[0] + " y " + datos[1] + " con distancia " + distancia);
             }
         } catch (IOException e) {
             System.out.println("Error al leer el archivo de distancias: " + e.getMessage());
@@ -116,18 +116,28 @@ System.out.println("Número de aristas: " + grafo.numeroAristas());
 System.out.println("¿Existe el nodo Nodo2? " + grafo.existeNodo("Nodo2"));
 System.out.println("¿Existe una arista entre Nodo1 y Nodo2? " + grafo.existeArista("Nodo1", "Nodo2"));
 
+// Prueba: algoritmo de Dijkstra
+List<String> camino = grafo.Dijkstra("Nodo1", "Nodo2");
+System.out.println("Camino más corto entre Nodo1 y Nodo2: " + camino);
+
+
 // Prueba: borrar nodo y arista
 grafo.borrarNodo("Nodo3");
 System.out.println("Número de nodos después de borrar Nodo3: " + grafo.numeroNodos());
 grafo.borrarArista("Nodo1", "Nodo2");
 System.out.println("Número de aristas después de borrar arista entre Nodo1 y Nodo2: " + grafo.numeroAristas());
 
-// Prueba: algoritmo de Dijkstra
-List<String> camino = grafo.Dijkstra("Nodo1", "Nodo2");
-System.out.println("Camino más corto entre Nodo1 y Nodo2: " + camino);
+// Prueba: algoritmo de Dijkstra CARREÑO-206
+
+
+List<String> shortestPath = grafo.Dijkstra("GIJON-123", "AVILES-17");
+System.out.println("Camino más corto entre AVILES-14 y AVILES-10 " + shortestPath);
+
+
+
 
 // Prueba: representación del grafo
-//System.out.println("Representación del grafo:\n" + grafo.toString());
+System.out.println("Representación del grafo:\n" + grafo.toString());
 
 // Finalización del programa
 System.out.println("Finalizando el programa...");
