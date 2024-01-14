@@ -1,6 +1,6 @@
 package grafo;
 
-public class Gasolinera {
+public class Gasolinera implements NodoGrafo {
     private String clave;
     private String rotulo;
     private String direccion;
@@ -15,5 +15,10 @@ public class Gasolinera {
         this.localidad = localidad;
     }
 
-    // Otros métodos, incluyendo posiblemente getters y la implementación de NodoGrafo
+    @Override
+    public String getClave() {
+        return clave;
+    }
+
+    // Otros métodos como getters si son necesarios
 }
