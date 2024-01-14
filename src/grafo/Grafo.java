@@ -21,6 +21,9 @@ public class Grafo {
             nodo1.aristas.add(new Arista(nodo2, peso));
             nodo2.aristas.add(new Arista(nodo1, peso)); // Para grafo no dirigido
         }
+
+
+        
     }
 
     private Nodo encontrarNodoPorClave(String clave) {

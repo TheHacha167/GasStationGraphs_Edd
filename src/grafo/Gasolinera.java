@@ -19,6 +19,8 @@ public class Gasolinera implements NodoGrafo {
         return clave;
     }
 
+
+    
     public String toString() {
         return "Gasolinera{" +
                "clave='" + clave + '\'' +
