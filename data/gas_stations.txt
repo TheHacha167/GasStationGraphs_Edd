@@ -1,7 +1,0 @@
-clave1, Rótulo1, Dirección1, Latitud1, Longitud1
-clave2, Rótulo2, Dirección2, Latitud2, Longitud2
-clave3, Rótulo3, Dirección3, Latitud3, Longitud3
-GS001, Gasolinera Norte, Calle Norte 123, 40.7128, -74.0060
-GS002, Gasolinera Sur, Avenida Sur 456, 34.0522, -118.2437
-GS003, Gasolinera Este, Ruta Este 78, 41.8781, -87.6298
-
