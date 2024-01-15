@@ -57,10 +57,13 @@ public class Principal {
 package grafo;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+//import java.io.InputStreamReader;
+//import java.io.FileInputStream;
+import java.io.FileReader;
+//import java.nio.charset.StandardCharsets;
 
 public class Principal {
     
@@ -97,7 +100,44 @@ public class Principal {
             System.out.println("Error al leer el archivo de distancias: " + e.getMessage());
         }
 
+/* 
 
+public static void main(String[] args) {
+    System.out.println("Iniciando el programa...");
+
+    Grafo grafo = new Grafo();
+    String pathGasolineras = "data/gasolineras.csv";
+    String pathDistancias = "data/distancias-gasolineras.csv";
+    
+    System.out.println("Leyendo archivo de gasolineras...");
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(pathGasolineras), "ISO-8859-1"))) {
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split(";");
+            Gasolinera gasolinera = new Gasolinera(datos[2], datos[4], datos[3], datos[0], datos[1]);
+            grafo.insertarNodo(gasolinera);
+            //System.out.println("Insertada gasolinera: " + gasolinera);
+        }
+    } catch (IOException e) {
+        System.out.println("Error al leer el archivo de gasolineras: " + e.getMessage());
+    }
+
+    System.out.println("Leyendo archivo de distancias...");
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(pathDistancias), "ISO-8859-1"))) {
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            String[] datos = linea.split(";");
+            double distancia = Double.parseDouble(datos[2].replace(",", "."));
+            grafo.insertarArista(datos[0], datos[1], distancia);
+           // System.out.println("Insertada arista entre " + datos[0] + " y " + datos[1] + " con distancia " + distancia);
+        }
+    } catch (IOException e) {
+        System.out.println("Error al leer el archivo de distancias: " + e.getMessage());
+    }
+
+
+
+    */
 // Insertar nodos de prueba
 
 // Insertar nodos de prueba
@@ -131,20 +171,6 @@ grafo.borrarNodo("Nodo1");
 grafo.borrarNodo("Nodo2");
 
 
-// Prueba: algoritmo de Dijkstra CARREÑO-206
-
-
-//List<String> shortestPath = grafo.Dijkstra("nodo1", "nodo2");
-//System.out.println("Camino más corto entre nodo1 y nodo2 " + shortestPath);
-
-
-// Prueba: representación del grafo
-//System.out.println("Representación del grafo:\n" + grafo.toString());
-
-
-
-// Imprimir el camino más corto
-//System.out.println("Camino más corto entre " + nodo1 + " y " + nodo2 + ": " + shortestPath);
 // Después de cargar los datos
 System.out.println("Lista de Nodos:");
 for (Gasolinera g : grafo.obtenerNodos()) {
@@ -169,6 +195,8 @@ scanner.close();
 
 
 
+// Prueba: representación del grafo
+//System.out.println("Representación del grafo:\n" + grafo.toString());
 
 
 
@@ -182,6 +210,6 @@ scanner.close();
 // Finalización del programa
 System.out.println("Finalizando el programa...");
 
-        //System.out.println("Finalizando el programa...");
+        System.out.println("Finalizando el programa...");
     }
 }
