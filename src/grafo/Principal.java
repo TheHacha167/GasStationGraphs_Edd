@@ -60,6 +60,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Principal {
     
@@ -69,7 +70,7 @@ public class Principal {
         Grafo grafo = new Grafo();
         String pathGasolineras = "data/gasolineras.csv";
         String pathDistancias = "data/distancias-gasolineras.csv";
-
+        
         System.out.println("Leyendo archivo de gasolineras...");
         try (BufferedReader br = new BufferedReader(new FileReader(pathGasolineras))) {
             String linea;
@@ -126,18 +127,57 @@ grafo.borrarNodo("Nodo3");
 System.out.println("Número de nodos después de borrar Nodo3: " + grafo.numeroNodos());
 grafo.borrarArista("Nodo1", "Nodo2");
 System.out.println("Número de aristas después de borrar arista entre Nodo1 y Nodo2: " + grafo.numeroAristas());
+grafo.borrarNodo("Nodo1");
+grafo.borrarNodo("Nodo2");
+
 
 // Prueba: algoritmo de Dijkstra CARREÑO-206
 
 
-List<String> shortestPath = grafo.Dijkstra("GIJON-123", "AVILES-17");
-System.out.println("Camino más corto entre AVILES-14 y AVILES-10 " + shortestPath);
-
-
+//List<String> shortestPath = grafo.Dijkstra("nodo1", "nodo2");
+//System.out.println("Camino más corto entre nodo1 y nodo2 " + shortestPath);
 
 
 // Prueba: representación del grafo
-System.out.println("Representación del grafo:\n" + grafo.toString());
+//System.out.println("Representación del grafo:\n" + grafo.toString());
+
+
+
+// Imprimir el camino más corto
+//System.out.println("Camino más corto entre " + nodo1 + " y " + nodo2 + ": " + shortestPath);
+// Después de cargar los datos
+System.out.println("Lista de Nodos:");
+for (Gasolinera g : grafo.obtenerNodos()) {
+    System.out.println(g.getClave() ); //+ ": " + g.getRotulo()
+}
+
+
+
+Scanner scanner = new Scanner(System.in);
+System.out.print("Ingrese el clave del primer nodo: ");
+String clave1 = scanner.nextLine();
+System.out.print("Ingrese el clave del segundo nodo: ");
+String clave2 = scanner.nextLine();
+
+List<String> camino1 = grafo.Dijkstra(clave1, clave2);
+if (camino1 != null) {
+    System.out.println("Camino más corto: " + camino1);
+} else {
+    System.out.println("No se encontró un camino.");
+}
+scanner.close();
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Finalización del programa
 System.out.println("Finalizando el programa...");

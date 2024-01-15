@@ -19,7 +19,9 @@ public class Gasolinera implements NodoGrafo {
         return clave;
     }
 
-
+    public String getRotulo() {
+        return rotulo;
+    }
     
     public String toString() {
         return "Gasolinera{" +
