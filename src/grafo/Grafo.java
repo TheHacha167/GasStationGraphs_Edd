@@ -107,59 +107,89 @@ public List<Gasolinera> obtenerNodos() {
     return gasolineras;
 }
 
+public class NodoEstado {
+    Nodo nodo;
+    double distancia;
+    Nodo predecesor;
 
-// Implementación del algoritmo de Dijkstra
+    public NodoEstado(Nodo nodo) {
+        this.nodo = nodo;
+        this.distancia = Double.MAX_VALUE;
+        this.predecesor = null;
+    }
+
+    public void setDistancia(double distancia) {
+        this.distancia = distancia;
+    }
+
+    public void setPredecesor(Nodo predecesor) {
+        this.predecesor = predecesor;
+    }
+}
+
 public List<String> Dijkstra(String claveOrigen, String claveDestino) {
     Nodo origen = encontrarNodoPorClave(claveOrigen);
     Nodo destino = encontrarNodoPorClave(claveDestino);
 
     if (origen == null || destino == null) {
-        return null; // Uno de los nodos no existe
+        return null;
     }
 
-    Map<Nodo, Nodo> predecesores = new HashMap<>();
-    Map<Nodo, Double> distancia = new HashMap<>();
-    PriorityQueue<Nodo> colaPrioridad = new PriorityQueue<>(Comparator.comparing(distancia::get));
-
+    List<NodoEstado> nodoEstados = new ArrayList<>();
     for (Nodo nodo : nodos) {
-        distancia.put(nodo, Double.MAX_VALUE);
-        predecesores.put(nodo, null);
+        nodoEstados.add(new NodoEstado(nodo));
     }
 
-    distancia.put(origen, 0.0);
-    colaPrioridad.add(origen);
+    NodoEstado estadoOrigen = obtenerNodoEstado(nodoEstados, origen);
+    estadoOrigen.setDistancia(0.0);
+
+    PriorityQueue<NodoEstado> colaPrioridad = new PriorityQueue<>(Comparator.comparingDouble(ne -> ne.distancia));
+    colaPrioridad.add(estadoOrigen);
 
     while (!colaPrioridad.isEmpty()) {
-        Nodo actual = colaPrioridad.poll();
+        NodoEstado estadoActual = colaPrioridad.poll();
 
-        for (Arista arista : actual.aristas) {
+        for (Arista arista : estadoActual.nodo.aristas) {
             Nodo adyacente = arista.destino;
             double pesoArista = arista.peso;
-            double distanciaNueva = distancia.get(actual) + pesoArista;            
-            if (distanciaNueva < distancia.get(adyacente)) {
-                distancia.put(adyacente, distanciaNueva);
-                predecesores.put(adyacente, actual);
-                colaPrioridad.add(adyacente);
+            NodoEstado estadoAdyacente = obtenerNodoEstado(nodoEstados, adyacente);
+
+            double distanciaNueva = estadoActual.distancia + pesoArista;
+            if (distanciaNueva < estadoAdyacente.distancia) {
+                estadoAdyacente.setDistancia(distanciaNueva);
+                estadoAdyacente.setPredecesor(estadoActual.nodo);
+                colaPrioridad.add(estadoAdyacente);
             }
         }
     }
 
-    return reconstruirCamino(predecesores, origen, destino);
+    return reconstruirCamino(nodoEstados, origen, destino);
 }
 
-private List<String> reconstruirCamino(Map<Nodo, Nodo> predecesores, Nodo origen, Nodo destino) {
-    LinkedList<String> camino = new LinkedList<>();
-    Nodo paso = destino;
+private NodoEstado obtenerNodoEstado(List<NodoEstado> nodoEstados, Nodo nodo) {
+    for (NodoEstado ne : nodoEstados) {
+        if (ne.nodo.equals(nodo)) {
+            return ne;
+        }
+    }
+    return null;
+}
 
-    // Comprobar si hay un camino
-    if (predecesores.get(paso) == null) {
+private List<String> reconstruirCamino(List<NodoEstado> nodoEstados, Nodo origen, Nodo destino) {
+    LinkedList<String> camino = new LinkedList<>();
+    NodoEstado paso = obtenerNodoEstado(nodoEstados, destino);
+
+    if (paso == null || paso.predecesor == null) {
         return null;
     }
 
-    camino.add(paso.gasolinera.getClave());
-    while (predecesores.get(paso) != null) {
-        paso = predecesores.get(paso);
-        camino.addFirst(paso.gasolinera.getClave());
+    while (paso != null && !paso.nodo.equals(origen)) {
+        camino.addFirst(paso.nodo.gasolinera.getClave());
+        paso = obtenerNodoEstado(nodoEstados, paso.predecesor);
+    }
+
+    if (paso != null) {
+        camino.addFirst(origen.gasolinera.getClave());
     }
 
     return new ArrayList<>(camino);
