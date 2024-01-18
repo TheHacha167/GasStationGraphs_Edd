@@ -4,21 +4,19 @@ import java.util.*;
 
 public class Grafo {
         // Una lista de nodos en el grafo
-
     private List<Nodo> nodos;
 
         // Constructor que inicializa la lista de nodos
-
     public Grafo() {
         nodos = new ArrayList<>();
     }
-    // Método para insertar un nodo en el grafo
 
+    // Método para insertar un nodo en el grafo
     public void insertarNodo(Gasolinera gasolinera) {
         nodos.add(new Nodo(gasolinera));
     }
-    // Método para insertar una arista entre dos nodos en el grafo
 
+    // Método para insertar una arista entre dos nodos en el grafo
     public void insertarArista(String clave1, String clave2, double peso) {
                 // Encuentra los nodos correspondientes a las claves proporcionadas
 
@@ -31,8 +29,8 @@ public class Grafo {
             nodo2.aristas.add(new Arista(nodo1, peso)); // Para grafo no dirigido
         }
     }
-    // Método para encontrar un nodo en el grafo por su clave
 
+    // Método para encontrar un nodo en el grafo por su clave
     private Nodo encontrarNodoPorClave(String clave) {
                 // Recorre todos los nodos en el grafo
 
@@ -49,12 +47,9 @@ public class Grafo {
     }
 
     // Implementaciones de los métodos adicionales (borrarNodo, existeNodo, etc.)
-
     // Método para borrar un nodo del grafo
-
 public boolean borrarNodo(String clave) {
             // Encuentra el nodo correspondiente a la clave proporcionada
-
     Nodo nodoAEliminar = encontrarNodoPorClave(clave);
 
     if (nodoAEliminar != null) {

@@ -30,7 +30,7 @@ public class Principal {
                 Gasolinera gasolinera = new Gasolinera(datos[2], datos[4], datos[3], datos[0], datos[1]);
                 // Insertar la gasolinera en el grafo
                 grafo.insertarNodo(gasolinera);
-                System.out.println("Insertada gasolinera: " + gasolinera);
+                //System.out.println("Insertada gasolinera: " + gasolinera);
             }
         } catch (IOException e) {
             // Manejo de errores de lectura del archivo
@@ -48,7 +48,7 @@ public class Principal {
                 double distancia = Double.parseDouble(datos[2].replace(",", "."));
                 // Insertar la arista en el grafo
                 grafo.insertarArista(datos[0], datos[1], distancia);
-                System.out.println("Insertada arista entre " + datos[0] + " y " + datos[1] + " con distancia " + distancia);
+                //System.out.println("Insertada arista entre " + datos[0] + " y " + datos[1] + " con distancia " + distancia);
             }
         } catch (IOException e) {
             // Manejo de errores de lectura del archivo
