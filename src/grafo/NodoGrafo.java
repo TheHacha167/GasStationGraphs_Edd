@@ -1,15 +1,9 @@
+// Define el paquete en el que se encuentra esta interfaz
 package grafo;
 
-/**
- * Interface GraphNode
- * Representa un nodo en un grafo. Esta interfaz deberá ser implementada por cualquier clase
- * que desee ser considerada como un nodo en el grafo (por ejemplo, la clase GasStation).
- * 
- * Métodos:
- * - String getClave(): Este método deberá ser implementado para retornar la clave única
- *   que identifica a cada nodo dentro del grafo.
- */
-
+// Define una interfaz pública llamada NodoGrafo
 public interface NodoGrafo {
+    // Declara un método llamado getClave que todas las clases que implementen esta interfaz deben definir.
+    // Este método no toma ningún argumento y devuelve una cadena de texto.
     String getClave();
 }

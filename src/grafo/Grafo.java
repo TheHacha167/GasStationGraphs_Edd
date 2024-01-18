@@ -1,41 +1,60 @@
-
 package grafo;
 
 import java.util.*;
 
 public class Grafo {
+        // Una lista de nodos en el grafo
+
     private List<Nodo> nodos;
+
+        // Constructor que inicializa la lista de nodos
 
     public Grafo() {
         nodos = new ArrayList<>();
     }
+    // Método para insertar un nodo en el grafo
 
     public void insertarNodo(Gasolinera gasolinera) {
         nodos.add(new Nodo(gasolinera));
     }
+    // Método para insertar una arista entre dos nodos en el grafo
 
     public void insertarArista(String clave1, String clave2, double peso) {
+                // Encuentra los nodos correspondientes a las claves proporcionadas
+
         Nodo nodo1 = encontrarNodoPorClave(clave1);
         Nodo nodo2 = encontrarNodoPorClave(clave2);
+                // Si ambos nodos existen, añade una arista entre ellos
+
         if (nodo1 != null && nodo2 != null) {
             nodo1.aristas.add(new Arista(nodo2, peso));
             nodo2.aristas.add(new Arista(nodo1, peso)); // Para grafo no dirigido
         }
     }
+    // Método para encontrar un nodo en el grafo por su clave
 
     private Nodo encontrarNodoPorClave(String clave) {
+                // Recorre todos los nodos en el grafo
+
         for (Nodo nodo : nodos) {
+                        // Si la clave del nodo coincide con la clave proporcionada, devuelve el nodo
+
             if (nodo.gasolinera.getClave().equals(clave)) {
                 return nodo;
             }
         }
+                // Si no se encuentra ningún nodo, devuelve null
+
         return null;
     }
 
     // Implementaciones de los métodos adicionales (borrarNodo, existeNodo, etc.)
 
+    // Método para borrar un nodo del grafo
 
 public boolean borrarNodo(String clave) {
+            // Encuentra el nodo correspondiente a la clave proporcionada
+
     Nodo nodoAEliminar = encontrarNodoPorClave(clave);
 
     if (nodoAEliminar != null) {
@@ -234,71 +253,3 @@ private class Arista {
         this.peso = peso;
     }
 }}
-                
-
-
-
-                /*package grafo;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class Grafo {
-    private List<Nodo> nodos;
-
-    public Grafo() {
-        nodos = new ArrayList<>();
-    }
-
-    public void insertarNodo(Gasolinera gasolinera) {
-        nodos.add(new Nodo(gasolinera));
-    }
-
-    public void insertarArista(String clave1, String clave2, double peso) {
-        Nodo nodo1 = encontrarNodoPorClave(clave1);
-        Nodo nodo2 = encontrarNodoPorClave(clave2);
-        if (nodo1 != null && nodo2 != null) {
-            nodo1.aristas.add(new Arista(nodo2, peso));
-            nodo2.aristas.add(new Arista(nodo1, peso)); // Para grafo no dirigido
-        }
-
-
-        
-    }
-
-    private Nodo encontrarNodoPorClave(String clave) {
-        for (Nodo nodo : nodos) {
-           
-            if (nodo.gasolinera.getClave().equals(clave)) {
-                return nodo;
-                }
-                }
-                return null;
-                }
-                private class Nodo {
-                    Gasolinera gasolinera;
-                    List<Arista> aristas;
-                
-                    Nodo(Gasolinera gasolinera) {
-                        this.gasolinera = gasolinera;
-                        this.aristas = new ArrayList<>();
-                    }
-                }
-                
-                private class Arista {
-                    Arista(Nodo destino, double peso) {
-                        // Remove unused fields
-                    }
-                }
-                
-               
-               
-               
-               
-               
-               
-               
-                // Aquí puedes añadir otros métodos como toString, eliminarNodo, eliminarArista, etc.
-            }                */
-
-
